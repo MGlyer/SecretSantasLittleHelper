@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './Nav.jsx'
+import SecretSanta from './SecretSanta.jsx'
 import { Link } from 'react-router-dom'
 
 class Profile extends React.Component {

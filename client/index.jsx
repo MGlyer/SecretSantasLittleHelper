@@ -10,6 +10,12 @@ class App extends React.Component {
     state = {
         loggedIn: true
     }
+    handleLogout = this.handleLogout.bind(this)
+    
+
+    handleLogout() {
+      this.setState({loggedIn: false})
+    }
 
 
     render() {
@@ -29,7 +35,7 @@ class App extends React.Component {
             return (
                 <Router>
                   <div>
-                    <Nav />
+                    <Nav handleLogout = {this.handleLogout}/>
                     <Switch>
                       <Route path='/profile' render = {() => <Profile />} />
                       <Route path='/newSecretSanta' render = {() => <NewSS/> } />

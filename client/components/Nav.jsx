@@ -6,7 +6,7 @@ const Nav = (props) => {
         <div className="tabs">
             <ul>
                 <Link to="/profile">Your Profile</Link>
-                <Link to='/logout'>Logout</Link>
+                <Link to='/logout' onClick = {props.handleLogout} >Logout</Link>
             </ul>
         </div>
     )
