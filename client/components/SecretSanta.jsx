@@ -8,7 +8,11 @@ class SecretSanta extends React.Component {
     render() {
         return (
             <div>
-                here is a current secret Santa group you are in
+                here is a current secret Santa group you are in: <br/>
+                Name: {this.props.santaGroup.name}
+                {/* Items: {
+                    this.props.items.map((item))
+                } */}
             </div>
         )
     }

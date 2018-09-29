@@ -11,10 +11,14 @@ class App extends React.Component {
         loggedIn: true
     }
     handleLogout = this.handleLogout.bind(this)
+    handleLogin = this.handleLogin.bind(this)
     
 
     handleLogout() {
       this.setState({loggedIn: false})
+    }
+    handleLogin() {
+      this.setState({loggedIn: true})
     }
 
 
@@ -27,7 +31,7 @@ class App extends React.Component {
                         <input type="text" name="" id=""/><input type="password" name="" id=""/>
                     </div>
                     <div>
-                        <button>Login</button><br/><button>SignUp</button>
+                        <button onClick={this.handleLogin} >Login</button><br/><button>SignUp</button>
                     </div>
                 </div>
             )
