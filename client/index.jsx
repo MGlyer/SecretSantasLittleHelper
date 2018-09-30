@@ -5,13 +5,20 @@ import { BrowserRouter as Router, Route, Switch, Link, NavLink, Redirect } from 
 import Nav from './components/Nav.jsx'
 import Profile from './components/Profile.jsx'
 import NewSS from './components/NewSS.jsx'
+import Onboarding from './components/Onboarding.jsx'
+import { Modal, ModalContent, Button, Icon, Input } from 'semantic-ui-react'
 
 class App extends React.Component {
     state = {
-        loggedIn: true
+        loggedIn: true,
+        username: '',
+        password: '',
+        onboarding: false
     }
     handleLogout = this.handleLogout.bind(this)
     handleLogin = this.handleLogin.bind(this)
+    handleValueChange = this.handleValueChange.bind(this)
+    handleSignup = this.handleSignup.bind(this)
     
 
     handleLogout() {
@@ -19,6 +26,14 @@ class App extends React.Component {
     }
     handleLogin() {
       this.setState({loggedIn: true})
+    }
+    handleSignup() {
+      this.setState({loggedIn: true, onboarding: true})
+    }
+    handleValueChange(e) {
+      e.preventDefault()
+      let toChange = e.target.className
+      this.setState({[toChange]: e.target.value})
     }
 
 
@@ -28,22 +43,25 @@ class App extends React.Component {
                 <div>
                     Login Page!
                     <div>
-                        <input type="text" name="" id=""/><input type="password" name="" id=""/>
+                        <Input onChange = {this.handleValueChange} type="text" className= 'username' placeholder = 'username' />
+                        <Input onChange = {this.handleValueChange} type="password" className = 'password' placeholder = 'password' />
                     </div>
                     <div>
-                        <button onClick={this.handleLogin} >Login</button><br/><button>SignUp</button>
+                        <Button onClick={this.handleLogin} >Login</Button><br/>
+                        <Button onClick={this.handleSignup}>SignUp</Button>
                     </div>
                 </div>
             )
-        } else {
+          } else {
             return (
-                <Router>
+              <Router>
                   <div>
                     <Nav handleLogout = {this.handleLogout}/>
                     <Switch>
                       <Route path='/profile' render = {() => <Profile />} />
                       <Route path='/newSecretSanta' render = {() => <NewSS/> } />
                     </Switch>
+                    <Onboarding open = {this.state.onboarding} />
                   </div>    
                 </Router>
             )
