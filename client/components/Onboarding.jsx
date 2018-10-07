@@ -49,6 +49,11 @@ class Onboarding extends React.Component {
                 </ModalHeader>
                 <ModalContent>
                     <p>here is the second one</p>
+                        <Form.Group widths='equal'>
+                            <Form.Input fluid label='First Name' placeholder='First Name' />
+                            <Form.Input fluid label='Last Name' placeholder='Last Name' />
+                        </Form.Group>
+                        <Form.TextArea style={{width: '500px'}} label="Likes" placeholder="Tell us some things that you like..." />
                 </ModalContent>
                 <Modal.Actions>
                     <Button id='2' onClick = {this.handleModalChange}>Next <Icon name="right chevron" /> </Button>
