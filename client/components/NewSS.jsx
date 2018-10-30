@@ -66,7 +66,7 @@ class NewSS extends React.Component {
         <div className="specifications">
           {/* <Form.Input fluid label="" /> */}
           <Form.Group inline>
-            <Label>Multiple Gifts ok?</Label>
+            <h3>Multiple Gifts ok?</h3>
             <Form.Radio label='Yes' value = 'yes' onChange = {e => this.setState({multiGift: true})} />
             <Form.Radio label='No' value = 'no' onChange = {e => this.setState({multiGift: false})} />
           </Form.Group>
