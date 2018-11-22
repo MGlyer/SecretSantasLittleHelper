@@ -3,18 +3,25 @@ const mongoose = require('mongoose')
 let UserSchema = mongoose.Schema({
   name: String,
   password: String,
-  secretSantaID: Array
+  email: String,
+  secretSantaID: Array,
+  givingGiftTo: Object //key will be secretSantaID, value will be ID of person
 })
 
 let SecretSantaSchema = mongoose.Schema({
-  ID: String,
+  creatorID: String,
   startDate: String,
-  endDate: String
+  endDate: String,
+  invited: Array,
+  participating: Array,
+  maxCost: Number,
 })
 
 let User = mongoose.model('User', UserSchema)
+let SecretSantaGame = mongoose.model('SecretSantaGame', SecretSantaSchema)
 
 
 module.exports = {
-  User
+  User,
+  SecretSantaGame
 }
