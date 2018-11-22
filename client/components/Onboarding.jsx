@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import { Modal, ModalHeader, ModalContent, Progress, Form, Button, Icon } from 'semantic-ui-react'
 
 class Onboarding extends React.Component {
@@ -8,10 +9,12 @@ class Onboarding extends React.Component {
         '2Open': false,
         firstName: '',
         lastName: '',
-        eMail: ''
+        eMail: '',
+        password: ''
     }
     handleModalChange = this.handleModalChange.bind(this)
     handleFormChange = this.handleFormChange.bind(this)
+    handleUserSignup = this.handleUserSignup.bind(this)
 
     handleModalChange(e) {
         let closeKey = e.target.id.toString() + 'Open'
@@ -30,6 +33,19 @@ class Onboarding extends React.Component {
         this.setState({[stateToChange] : e.target.value})
     }
 
+    handleUserSignup () {
+        let user = {
+            name: `${this.state.firstName} ${this.state.lastName}`,
+            password: this.state.password,
+            email: this.state.eMail
+        }
+        axios.post('/users/signup', user)
+             .then((response) => {
+                 console.log(response.body)
+             })
+             .catch((err) => console.error(err))
+    }
+
     render() {
         return(
             <div>
@@ -45,6 +61,7 @@ class Onboarding extends React.Component {
                             <Form.Input fluid label='First Name' placeholder= 'First Name' id= 'firstName' />
                             <Form.Input fluid label='Last Name' placeholder= 'Last Name' id= 'lastName' />
                             <Form.Input fluid label='eMail' placeholder= 'eMail' id= 'eMail' />
+                            <Form.Input fluid label='password' placeholder= 'password' id= 'password' />
                         </Form.Group>
                     </Form>
                 </ModalContent>
@@ -66,7 +83,10 @@ class Onboarding extends React.Component {
                         <Form.TextArea style={{width: '500px'}} label="Likes" placeholder="Tell us some things that you like..." />
                 </ModalContent>
                 <Modal.Actions>
-                    <Button id='2' onClick = {this.handleModalChange}>Next <Icon name="right chevron" /> </Button>
+                    <Button id='2' onClick = {() => {
+                        this.handleModalChange
+                        this.handleUserSignup
+                    }}>Next <Icon name="right chevron" /> </Button>
                 </Modal.Actions>
             </Modal>
             </div>

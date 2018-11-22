@@ -11,7 +11,7 @@ server.use(express.static(__dirname + '/../dist'))
 const { signUp } = require('./db/index')
 
 //METHOD USE
-server.post('/user/signup', (req, res) => {
+server.post('/users/signup', (req, res) => {
   let user = req.body
   signUp(user)
   res.send('successfuly posted user')
