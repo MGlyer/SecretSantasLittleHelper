@@ -14,3 +14,7 @@ const signUp = (user) => {
     givingGiftTo: {}
   }).save()
 }
+
+module.exports = {
+  signUp
+}
