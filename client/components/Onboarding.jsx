@@ -5,9 +5,13 @@ class Onboarding extends React.Component {
     state = {
         progress: 0,
         '1Open': true,
-        '2Open': false
+        '2Open': false,
+        firstName: '',
+        lastName: '',
+        eMail: ''
     }
     handleModalChange = this.handleModalChange.bind(this)
+    handleFormChange = this.handleFormChange.bind(this)
 
     handleModalChange(e) {
         let closeKey = e.target.id.toString() + 'Open'
@@ -21,6 +25,11 @@ class Onboarding extends React.Component {
         })
     }
 
+    handleFormChange(e) {
+        let stateToChange = e.target.id
+        this.setState({[stateToChange] : e.target.value})
+    }
+
     render() {
         return(
             <div>
@@ -32,9 +41,10 @@ class Onboarding extends React.Component {
                 <ModalContent>
                     <p>we need to get to know you!</p>
                     <Form>
-                        <Form.Group widths = 'equal'>
-                            <Form.Input fluid label='First Name' placeholder= 'First Name' />
-                            <Form.Input fluid label='Last Name' placeholder= 'Last Name' />
+                        <Form.Group widths = 'equal' onChange={this.handleFormChange} >
+                            <Form.Input fluid label='First Name' placeholder= 'First Name' id= 'firstName' />
+                            <Form.Input fluid label='Last Name' placeholder= 'Last Name' id= 'lastName' />
+                            <Form.Input fluid label='eMail' placeholder= 'eMail' id= 'eMail' />
                         </Form.Group>
                     </Form>
                 </ModalContent>
