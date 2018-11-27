@@ -39,6 +39,7 @@ class Onboarding extends React.Component {
             password: this.state.password,
             email: this.state.eMail
         }
+        console.log(user)
         axios.post('/users/signup', user)
              .then((response) => {
                  console.log(response.body)
@@ -83,10 +84,10 @@ class Onboarding extends React.Component {
                         <Form.TextArea style={{width: '500px'}} label="Likes" placeholder="Tell us some things that you like..." />
                 </ModalContent>
                 <Modal.Actions>
-                    <Button id='2' onClick = {() => {
-                        this.handleModalChange
+                    <Button id='2' onClick = {/*() => { */
+                        // this.handleModalChange()
                         this.handleUserSignup
-                    }}>Next <Icon name="right chevron" /> </Button>
+                    }>Next <Icon name="right chevron" /> </Button>
                 </Modal.Actions>
             </Modal>
             </div>

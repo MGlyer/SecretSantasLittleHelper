@@ -7,9 +7,9 @@ db.once('open', () => {
 
 const signUp = (user) => {
   let newUser = new User ({
-    name,
-    password,
-    email,
+    name: user.name,
+    password: user.password,
+    email: user.email,
     secretSantaID: [],
     givingGiftTo: {}
   }).save()
