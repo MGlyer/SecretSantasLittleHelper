@@ -14,7 +14,8 @@ let SecretSantaSchema = mongoose.Schema({
   endDate: String,
   invited: Array,
   participating: Array,
-  maxCost: Number,
+  moneyMax: Number,
+  multiGift: Boolean
 })
 
 let User = mongoose.model('User', UserSchema)

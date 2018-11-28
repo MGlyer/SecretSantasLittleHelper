@@ -6,8 +6,8 @@ import { Form, Input, Label, Radio } from 'semantic-ui-react'
 
 class NewSS extends React.Component {
   state = {
-    exchangeDay: undefined,
     startDay: undefined,
+    exchangeDay: undefined,
     moneyMax: 0,
     multiGift: false
   }
