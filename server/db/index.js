@@ -15,6 +15,11 @@ const signUp = (user) => {
   }).save()
 }
 
+const createNewSecretSantaGroup = (info, cb) => {
+  cb(null)
+}
+
 module.exports = {
-  signUp
+  signUp,
+  createNewSecretSantaGroup
 }
