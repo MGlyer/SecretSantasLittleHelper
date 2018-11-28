@@ -10,8 +10,8 @@ let UserSchema = mongoose.Schema({
 
 let SecretSantaSchema = mongoose.Schema({
   creatorID: String,
-  startDate: String,
-  endDate: String,
+  startDay: String,
+  exchangeDay: String,
   invited: Array,
   participating: Array,
   moneyMax: Number,

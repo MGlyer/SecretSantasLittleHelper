@@ -16,8 +16,21 @@ class NewSS extends React.Component {
   handleStartDayClick = this.handleStartDayClick.bind(this)
 
   submitNewSecretSantaGroup() {
-    let info = {}
+    let {startDay, exchangeDay, moneyMax, multiGift} = this.state
+    let info = {
+      startDay, exchangeDay, moneyMax, multiGift
+    }
     axios.post('/newSecretSantaGroup', info)
+        .then((response) => {
+          if (response.data === 'success') {
+            //more action later
+            console.log('success!')
+          } else {
+            //more action later
+            console.log('something went wrong...')
+          }
+        })
+        .catch((error) => console.error(error))
   }
   handleExchangeDayClick(day) {
     this.setState({ exchangeDay: day})
@@ -73,7 +86,7 @@ class NewSS extends React.Component {
           {/* <Form.Input/> */}
         </div>
 
-
+        <button onClick={this.submitNewSecretSantaGroup} >submit this Secret Santa</button>
       </div>
     )
   }

@@ -17,8 +17,9 @@ server.post('/users/signup', (req, res) => {
   res.send('successfuly posted user')
 })
 
-server.post('newSecretSantaGroup', (req, res) => {
+server.post('/newSecretSantaGroup', (req, res) => {
   let info = req.body
+  console.log('in server: ', info)
   createNewSecretSantaGroup(info, (err, result) => {
     if (err) res.send('error')
     else res.send('success')

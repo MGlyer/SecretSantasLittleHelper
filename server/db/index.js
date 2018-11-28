@@ -1,5 +1,5 @@
 const { db } = require('./dbConfig')
-const { User } = require('./models')
+const { User, SecretSantaGame } = require('./models')
 
 db.once('open', () => {
   console.log('connected to mlab')
@@ -16,6 +16,16 @@ const signUp = (user) => {
 }
 
 const createNewSecretSantaGroup = (info, cb) => {
+  let newGroup = new SecretSantaGame ({
+  creatorID: null,
+  startDay: info.startDay,
+  exchangeDay: info.exchangeDay,
+  invited: [],
+  participating: [],
+  moneyMax: info.moneyMax,
+  multiGift: info.multiGift
+  })
+  newGroup.save()
   cb(null)
 }
 
