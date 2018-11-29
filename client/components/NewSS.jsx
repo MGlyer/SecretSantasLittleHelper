@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import DayPicker from 'react-day-picker'
 import { Form, Input, Label, Radio } from 'semantic-ui-react'
+import moment from 'moment'
 // import 'react-day-picker/lib/style.css';
 
 class NewSS extends React.Component {
@@ -18,7 +19,9 @@ class NewSS extends React.Component {
   submitNewSecretSantaGroup() {
     let {startDay, exchangeDay, moneyMax, multiGift} = this.state
     let info = {
-      startDay, exchangeDay, moneyMax, multiGift
+      startDay: moment(startDay).format('ddd, MMM Do'), 
+      exchangeDay: moment(exchangeDay).format('ddd, MMM Do'), 
+      moneyMax, multiGift
     }
     axios.post('/newSecretSantaGroup', info)
         .then((response) => {

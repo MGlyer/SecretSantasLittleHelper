@@ -15,6 +15,7 @@ const signUp = (user) => {
   }).save()
 }
 
+//may switch the secret santa groups over to another, SQL db
 const createNewSecretSantaGroup = (info, cb) => {
   let newGroup = new SecretSantaGame ({
   creatorID: null,
