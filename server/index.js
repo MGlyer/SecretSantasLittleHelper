@@ -26,6 +26,13 @@ server.post('/newSecretSantaGroup/basicInfo', (req, res) => {
   })
 })
 
+server.post('/newSecretSantaGroup/initialInvites', (req, res) => {
+  let invites = req.body
+  console.log('in server, initialInvites: ', invites)
+  saveInitialInvitesToGroup(invites)
+  res.send(invites)
+})
+
 
 
 //BOOT SERVER
