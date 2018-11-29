@@ -17,6 +17,7 @@ class NewSS extends React.Component {
   submitNewSecretSantaGroup = this.submitNewSecretSantaGroup.bind(this)
   handleExchangeDayClick = this.handleExchangeDayClick.bind(this)
   handleStartDayClick = this.handleStartDayClick.bind(this)
+  handleInitialInvites = this.handleInitialInvites.bind(this)
 
   submitNewSecretSantaGroup() {
     let {startDay, exchangeDay, moneyMax, multiGift} = this.state

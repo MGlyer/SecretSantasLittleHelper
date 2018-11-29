@@ -38,7 +38,15 @@ const createNewSecretSantaGroup = (info, cb) => {
   })
 }
 
+const saveInitialInvitesToGroup = (info, cb) => {
+  SecretSantaGame.findByIdAndUpdate(info.id, {invited: info.invited}, (err, docs) => {
+    if (err) cb(err)
+    else cb(null, docs)
+  })
+}
+
 module.exports = {
   signUp,
-  createNewSecretSantaGroup
+  createNewSecretSantaGroup,
+  saveInitialInvitesToGroup
 }
