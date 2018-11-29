@@ -10,7 +10,8 @@ class NewSS extends React.Component {
     startDay: undefined,
     exchangeDay: undefined,
     moneyMax: 0,
-    multiGift: false
+    multiGift: false,
+    toInvite: []
   }
   submitNewSecretSantaGroup = this.submitNewSecretSantaGroup.bind(this)
   handleExchangeDayClick = this.handleExchangeDayClick.bind(this)
@@ -23,7 +24,7 @@ class NewSS extends React.Component {
       exchangeDay: moment(exchangeDay).format('ddd, MMM Do'), 
       moneyMax, multiGift
     }
-    axios.post('/newSecretSantaGroup', info)
+    axios.post('/newSecretSantaGroup/basicInfo', info)
         .then((response) => {
           if (response.data === 'success') {
             //more action later
@@ -40,6 +41,14 @@ class NewSS extends React.Component {
   }
   handleStartDayClick(day) {
     this.setState({ startDay: day})
+  }
+  handleInitialInvites() {
+    let invites = this.state.toInvite
+    axios.post('/newSecretSantaGroup/initialInvites', invites)
+         .then((response) => {
+           console.log('emails sent to: ', response.data)
+         })
+         .catch(error => console.error(error) )
   }
 
   render() {
