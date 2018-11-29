@@ -26,8 +26,16 @@ const createNewSecretSantaGroup = (info, cb) => {
   moneyMax: info.moneyMax,
   multiGift: info.multiGift
   })
-  newGroup.save()
-  cb(null)
+  newGroup.save((err, docs) => {
+    if (err) {
+      console.log('in db: ', err)
+      cb(err)
+    }
+    else {
+      console.log('successful save', docs)
+      cb(null, docs)
+    }
+  })
 }
 
 module.exports = {

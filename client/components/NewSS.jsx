@@ -11,6 +11,7 @@ class NewSS extends React.Component {
     exchangeDay: undefined,
     moneyMax: 0,
     multiGift: false,
+    groupId: '',
     toInvite: []
   }
   submitNewSecretSantaGroup = this.submitNewSecretSantaGroup.bind(this)
@@ -26,12 +27,13 @@ class NewSS extends React.Component {
     }
     axios.post('/newSecretSantaGroup/basicInfo', info)
         .then((response) => {
-          if (response.data === 'success') {
-            //more action later
-            console.log('success!')
-          } else {
+          if (response.data === 'error') {
             //more action later
             console.log('something went wrong...')
+          } else {
+            //more action later
+            console.log('success!', response.data)
+            this.setState({groupId: response.data['_id']})
           }
         })
         .catch((error) => console.error(error))
@@ -43,8 +45,11 @@ class NewSS extends React.Component {
     this.setState({ startDay: day})
   }
   handleInitialInvites() {
-    let invites = this.state.toInvite
-    axios.post('/newSecretSantaGroup/initialInvites', invites)
+    let info = {
+      invites: this.state.toInvite,
+      groupId: this.state.groupId
+    }
+    axios.post('/newSecretSantaGroup/initialInvites', info)
          .then((response) => {
            console.log('emails sent to: ', response.data)
          })

@@ -8,7 +8,7 @@ server.use(parser.json())
 server.use(express.static(__dirname + '/../dist'))
 
 //METHOD IMPORTS
-const { signUp, createNewSecretSantaGroup } = require('./db/index')
+const { signUp, createNewSecretSantaGroup, saveInitialInvitesToGroup } = require('./db/index')
 
 //METHOD USE
 server.post('/users/signup', (req, res) => {
@@ -21,14 +21,17 @@ server.post('/newSecretSantaGroup/basicInfo', (req, res) => {
   let info = req.body
   console.log('in server: ', info)
   createNewSecretSantaGroup(info, (err, result) => {
-    if (err) res.send('error')
-    else res.send('success')
+    if (err) {
+      console.log('post save to db', err)
+      res.send('error')
+    }
+    else res.send(result)
   })
 })
 
 server.post('/newSecretSantaGroup/initialInvites', (req, res) => {
-  let invites = req.body
-  console.log('in server, initialInvites: ', invites)
+  let info = req.body
+  console.log('in server, initialInvites: ', info)
   saveInitialInvitesToGroup(invites)
   res.send(invites)
 })
