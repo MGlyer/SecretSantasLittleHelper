@@ -12,7 +12,7 @@ class NewSS extends React.Component {
     moneyMax: 0,
     multiGift: false,
     groupId: '',
-    toInvite: []
+    toInvite: ['martinglyer@gmail.com']
   }
   submitNewSecretSantaGroup = this.submitNewSecretSantaGroup.bind(this)
   handleExchangeDayClick = this.handleExchangeDayClick.bind(this)
@@ -105,6 +105,7 @@ class NewSS extends React.Component {
         </div>
 
         <button onClick={this.submitNewSecretSantaGroup} >submit this Secret Santa</button>
+        <button onClick={this.handleInitialInvites} >submit invites</button>
       </div>
     )
   }

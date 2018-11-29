@@ -32,8 +32,8 @@ server.post('/newSecretSantaGroup/basicInfo', (req, res) => {
 server.post('/newSecretSantaGroup/initialInvites', (req, res) => {
   let info = req.body
   console.log('in server, initialInvites: ', info)
-  saveInitialInvitesToGroup(invites)
-  res.send(invites)
+  saveInitialInvitesToGroup(info)
+  res.send(info)
 })
 
 
