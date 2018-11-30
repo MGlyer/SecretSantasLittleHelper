@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import DayPicker from 'react-day-picker'
-import { Form, Input, Label, Radio } from 'semantic-ui-react'
+import { Form, Input, Label, Button } from 'semantic-ui-react'
 import moment from 'moment'
 // import 'react-day-picker/lib/style.css';
 
@@ -12,7 +12,8 @@ class NewSS extends React.Component {
     moneyMax: 0,
     multiGift: false,
     groupId: '',
-    toInvite: ['martinglyer@gmail.com']
+    toInvite: [],
+    individualToInvite: ''
   }
 
   submitNewSecretSantaGroup = () => {
@@ -51,6 +52,19 @@ class NewSS extends React.Component {
            console.log('emails sent to: ', response.data)
          })
          .catch(error => console.error(error) )
+  }
+  handleIndivitualInvite = (e) => {
+    this.setState({individualToInvite: e.target.value})
+  }
+  addToInviteList = () => {
+    let temp = this.state.toInvite
+    temp.push(this.state.individualToInvite)
+    this.setState({individualToInvite: '', toInvite: temp})
+  }
+  removeFromInviteList = (i) => {
+    let temp = this.state.toInvite
+    temp.splice(i, 1)
+    this.setState({toInvite: temp})
   }
 
   render() {
@@ -101,7 +115,24 @@ class NewSS extends React.Component {
         </div>
 
         <button onClick={this.submitNewSecretSantaGroup} >submit this Secret Santa</button>
-        <button onClick={this.handleInitialInvites} >submit invites</button>
+
+        <div>
+          <h3>Who would you like to invite?</h3>
+          <h5>Please enter a valid email address and hit 'Add'</h5>
+          <div>
+            {this.state.toInvite.map((indiv, ind) => {
+              return(
+                <div key={ind}>
+                  <span>{indiv}</span>
+                  <Button icon = 'close' onClick={() => this.removeFromInviteList(ind)}/>
+                </div>
+              )
+            })}
+          </div>
+          <Input onChange={this.handleIndivitualInvite} value={this.state.individualToInvite} />
+          <button onClick={this.addToInviteList} >Add</button>
+          <button onClick={this.handleInitialInvites} >submit invites</button>
+        </div>
       </div>
     )
   }
