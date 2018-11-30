@@ -14,12 +14,8 @@ class NewSS extends React.Component {
     groupId: '',
     toInvite: ['martinglyer@gmail.com']
   }
-  submitNewSecretSantaGroup = this.submitNewSecretSantaGroup.bind(this)
-  handleExchangeDayClick = this.handleExchangeDayClick.bind(this)
-  handleStartDayClick = this.handleStartDayClick.bind(this)
-  handleInitialInvites = this.handleInitialInvites.bind(this)
 
-  submitNewSecretSantaGroup() {
+  submitNewSecretSantaGroup = () => {
     let {startDay, exchangeDay, moneyMax, multiGift} = this.state
     let info = {
       startDay: moment(startDay).format('ddd, MMM Do'), 
@@ -39,13 +35,13 @@ class NewSS extends React.Component {
         })
         .catch((error) => console.error(error))
   }
-  handleExchangeDayClick(day) {
+  handleExchangeDayClick = (day) => {
     this.setState({ exchangeDay: day})
   }
-  handleStartDayClick(day) {
+  handleStartDayClick = (day) => {
     this.setState({ startDay: day})
   }
-  handleInitialInvites() {
+  handleInitialInvites = () => {
     let info = {
       invites: this.state.toInvite,
       groupId: this.state.groupId

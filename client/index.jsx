@@ -15,22 +15,17 @@ class App extends React.Component {
         password: '',
         onboarding: false
     }
-    handleLogout = this.handleLogout.bind(this)
-    handleLogin = this.handleLogin.bind(this)
-    handleValueChange = this.handleValueChange.bind(this)
-    handleSignup = this.handleSignup.bind(this)
     
-
-    handleLogout() {
+    handleLogout = () => {
       this.setState({loggedIn: false})
     }
-    handleLogin() {
+    handleLogin = () => {
       this.setState({loggedIn: true})
     }
-    handleSignup() {
+    handleSignup = () => {
       this.setState({loggedIn: true, onboarding: true})
     }
-    handleValueChange(e) {
+    handleValueChange = (e) => {
       e.preventDefault()
       let toChange = e.target.className
       this.setState({[toChange]: e.target.value})

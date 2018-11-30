@@ -12,11 +12,8 @@ class Onboarding extends React.Component {
         eMail: '',
         password: ''
     }
-    handleModalChange = this.handleModalChange.bind(this)
-    handleFormChange = this.handleFormChange.bind(this)
-    handleUserSignup = this.handleUserSignup.bind(this)
 
-    handleModalChange(e) {
+    handleModalChange = (e) => {
         let closeKey = e.target.id.toString() + 'Open'
         let openKey = (Number(e.target.id) +1) + 'Open'
         console.log('keys:', closeKey, openKey)
@@ -28,12 +25,12 @@ class Onboarding extends React.Component {
         })
     }
 
-    handleFormChange(e) {
+    handleFormChange = (e) => {
         let stateToChange = e.target.id
         this.setState({[stateToChange] : e.target.value})
     }
 
-    handleUserSignup () {
+    handleUserSignup = () => {
         let user = {
             name: `${this.state.firstName} ${this.state.lastName}`,
             password: this.state.password,
