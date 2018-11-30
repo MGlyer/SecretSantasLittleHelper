@@ -3,6 +3,7 @@ const server = express()
 
 //MIDDLEWARE SECTION
 const parser = require('body-parser')
+const path = require('path')
 
 server.use(parser.json())
 server.use(express.static(__dirname + '/../dist'))
@@ -34,6 +35,12 @@ server.post('/newSecretSantaGroup/initialInvites', (req, res) => {
   console.log('in server, initialInvites: ', info)
   saveInitialInvitesToGroup(info)
   res.send(info)
+})
+
+server.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../dist/index.html'), (err) => {
+    if (err) res.status(500).send(err)
+  })
 })
 
 
