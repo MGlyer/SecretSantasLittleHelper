@@ -33,8 +33,10 @@ server.post('/newSecretSantaGroup/basicInfo', (req, res) => {
 server.post('/newSecretSantaGroup/initialInvites', (req, res) => {
   let info = req.body
   console.log('in server, initialInvites: ', info)
-  saveInitialInvitesToGroup(info)
-  res.send(info)
+  saveInitialInvitesToGroup(info, (err, docs) => {
+    if (err) res.sendStatus(500).send(err)
+    else res.send(info)
+  })
 })
 
 server.get('/*', (req, res) => {
