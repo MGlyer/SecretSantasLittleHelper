@@ -21,6 +21,7 @@ const createNewSecretSantaGroup = (info, cb) => {
   creatorID: null,
   startDay: info.startDay,
   exchangeDay: info.exchangeDay,
+  toInvite: [],
   invited: [],
   participating: [],
   moneyMax: info.moneyMax,
@@ -39,7 +40,7 @@ const createNewSecretSantaGroup = (info, cb) => {
 }
 
 const saveInitialInvitesToGroup = (info, cb) => {
-  SecretSantaGame.findByIdAndUpdate(info.groupId, {invited: info.invites}, (err, docs) => {
+  SecretSantaGame.findByIdAndUpdate(info.groupId, {toInvite: info.invites}, (err, docs) => {
     if (err) cb(err)
     else {
       console.log('in the database.  here is the result: ', docs)

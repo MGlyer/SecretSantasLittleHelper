@@ -12,6 +12,7 @@ let SecretSantaSchema = mongoose.Schema({
   creatorID: String,
   startDay: String,
   exchangeDay: String,
+  toInvite: Array,
   invited: Array,
   participating: Array,
   moneyMax: Number,
